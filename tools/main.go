@@ -1,11 +1,16 @@
 package main
 
 import (
+	"io"
 	"os"
 	"text/template"
 )
 
 func main() {
+	fill(os.Stdout)
+}
+
+func fill(wr io.Writer) {
 	// Define a template.
 	const letter = `
 Dear {{.Name}},
@@ -33,6 +38,6 @@ Josie
 	}
 
 	// Create a new template and parse the letter into it.
-	template.Must(template.New("letter").Parse(letter)).Execute(os.Stdout, recipients[0])
+	template.Must(template.New("letter").Parse(letter)).Execute(wr, recipients[0])
 
 }
