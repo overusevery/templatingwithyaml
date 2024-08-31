@@ -1,3 +1,3 @@
 @Phony:generate
 generate:
-	go run tools/main.go
+	cd tools && go run .
